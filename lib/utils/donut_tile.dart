@@ -6,6 +6,7 @@ class DonutTile extends StatelessWidget {
   // dynamic porque será de tipo color
   final dynamic donutColor;
   final String imageName;
+  final String donutStore;
 
   const DonutTile({
     super.key,
@@ -13,6 +14,7 @@ class DonutTile extends StatelessWidget {
     required this.donutPrice,
     required this.donutColor,
     required this.imageName,
+    required this.donutStore,
   });
 
   @override
@@ -67,7 +69,7 @@ class DonutTile extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: donutColor[800],
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -76,20 +78,24 @@ class DonutTile extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
                 child: Text(
-                  "Dunkin's",
+                  donutStore,
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: donutColor[100],
+                    color: Colors.grey,
                   ),
                 ),
               ),
               //Icons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  IconButton(onPressed: () {}, icon: Icon(Icons.favorite_border)),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [     
+                    Icon(Icons.favorite_border, color: Colors.pink),
+                    Icon(Icons.add, color: Colors.grey,)         
+                  ],
+                ),
               ),
             ],
           ),
