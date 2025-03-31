@@ -29,26 +29,66 @@ class DonutTile extends StatelessWidget {
           child: Column(
             children: [
               Row(
+                //Alinea el precio a la derecha
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    decoration: BoxDecoration(
-                      color: donutColor[100],
-                      borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(24),
-                      topRight: const Radius.circular(24),
+                      decoration: BoxDecoration(
+                        color: donutColor[100],
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(24),
+                          topRight: const Radius.circular(24),
+                        ),
                       ),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 8,
-                    horizontal: 18),
-                    child: Text(
-                      '\$$donutPrice',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        color: donutColor[800],
-                      ),
-                    )
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 18),
+                      child: Text(
+                        '\$$donutPrice',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: donutColor[800],
+                        ),
+                      )),
+                ],
+              ),
+              //Donut price
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                child: Image.asset(imageName),
+              ),
+              //Donut flavor text
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                child: Text(
+                  donutFlavor,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: donutColor[800],
                   ),
+                ),
+              ),
+              //Dunkin's text
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+                child: Text(
+                  "Dunkin's",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: donutColor[100],
+                  ),
+                ),
+              ),
+              //Icons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(onPressed: () {}, icon: Icon(Icons.favorite_border)),
                 ],
               ),
             ],

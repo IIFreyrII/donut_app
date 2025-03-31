@@ -19,7 +19,9 @@ class DonutTab extends StatelessWidget {
         //Prepa 1:
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             //Número de columnas
-            crossAxisCount: 2),
+            crossAxisCount: 2,
+            //Proporción entre ancho y alto
+            childAspectRatio: 1 / 1.5),
         //Cuántos elementos
         itemCount: 4,
         padding: const EdgeInsets.all(12),
@@ -30,6 +32,7 @@ class DonutTab extends StatelessWidget {
               donutPrice: donutsOnSale[index][1],
               donutColor: donutsOnSale[index][2],
               imageName: donutsOnSale[index][3]);
-        });
+      }
+    );
   }
 }
