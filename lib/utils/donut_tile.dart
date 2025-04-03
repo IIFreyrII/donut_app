@@ -80,7 +80,7 @@ class DonutTile extends StatelessWidget {
                 child: Text(
                   donutStore,
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey,
                   ),

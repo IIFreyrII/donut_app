@@ -5,6 +5,7 @@ import 'package:donut_app/tabs/pizza.dart';
 import 'package:donut_app/tabs/smoothie.dart';
 import 'package:donut_app/utils/my_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:donut_app/utils/shopping_cart.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -15,22 +16,23 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   List<Widget> myTabs = [
-    MyTab(
+    const MyTab(
       iconPath: 'lib/icons/donut.png',
     ),
-    MyTab(
+    const MyTab(
       iconPath: 'lib/icons/burger.png',
     ),
-    MyTab(
+    const MyTab(
       iconPath: 'lib/icons/smoothie.png',
     ),
-    MyTab(
+    const MyTab(
       iconPath: 'lib/icons/pancakes.png',
     ),
-    MyTab(
+    const MyTab(
       iconPath: 'lib/icons/pizza.png',
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -38,6 +40,8 @@ class _HomepageState extends State<Homepage> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
+
+          //left menu icon
           leading: Icon(
             Icons.menu,
             color: Colors.grey[800],
@@ -51,44 +55,42 @@ class _HomepageState extends State<Homepage> {
         ),
         body: Column(
           children: [
-            //1.Texto principal
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
+            //1. Texto principal (MainText)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Row(
                 children: [
                   Text(
-                    "I want to ",
-                    style: TextStyle(
-                      fontSize: 32,
-                    ),
+                    'I want to ',
+                    style: TextStyle(fontSize: 32),
                   ),
                   Text(
-                    "Eat",
+                    'Eat',
                     style: TextStyle(
-                      //Tamaño de letra
-                      fontSize: 32,
-                      //Negritas
-                      fontWeight: FontWeight.bold,
-                      //Subrayado
-                      decoration: TextDecoration.underline,
-                    ),
+                        //Tamaño de letra
+                        fontSize: 32,
+                        //Negritas
+                        fontWeight: FontWeight.bold,
+                        //Subrayado
+                        decoration: TextDecoration.underline),
                   ),
                 ],
               ),
             ),
             //2. Pestañas (TabBar)
             TabBar(tabs: myTabs),
-            //3. Contenido de las pestañas (TabBarView)
+            //3. Contenido de pestañas (TabBarView)
             Expanded(
               child: TabBarView(children: [
                 DonutTab(),
                 BurgerTab(),
                 SmoothieTab(),
                 PancakesTab(),
-                PizzaTab()
+                PizzaTab(),
               ]),
-            )
+            ),
             //4. Carrito (Cart)
+            ShoppingCart()
           ],
         ),
       ),
