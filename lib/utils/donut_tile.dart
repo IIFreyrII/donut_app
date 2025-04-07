@@ -7,6 +7,7 @@ class DonutTile extends StatelessWidget {
   final dynamic donutColor;
   final String imageName;
   final String donutStore;
+  final VoidCallback onTap;
 
   const DonutTile({
     super.key,
@@ -15,6 +16,7 @@ class DonutTile extends StatelessWidget {
     required this.donutColor,
     required this.imageName,
     required this.donutStore,
+    required this.onTap,
   });
 
   @override
@@ -37,9 +39,9 @@ class DonutTile extends StatelessWidget {
                   Container(
                       decoration: BoxDecoration(
                         color: donutColor[100],
-                        borderRadius: const BorderRadius.only(
+                        borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(24),
-                          topRight: const Radius.circular(24),
+                          topRight: Radius.circular(24),
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
@@ -93,7 +95,15 @@ class DonutTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [     
                     Icon(Icons.favorite_border, color: Colors.pink),
-                    Icon(Icons.add, color: Colors.grey,)         
+                    ElevatedButton(
+                      onPressed: onTap,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.pink[300],
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      ),
+                      child: const Text("Añadir"),
+                    ),
                   ],
                 ),
               ),

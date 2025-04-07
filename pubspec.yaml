@@ -59,6 +59,11 @@ flutter:
   assets:
     - lib/images/
     - lib/icons/
+    - lib/images/images_donuts/
+    - lib/images/images_pancakes/
+    - lib/images/images_burgers/
+    - lib/images/images_pizzas/
+    - lib/images/images_smoothies/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

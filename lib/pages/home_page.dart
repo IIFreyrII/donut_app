@@ -18,7 +18,7 @@ class _HomepageState extends State<Homepage> {
   List<Widget> myTabs = [
     const MyTab(
       iconPath: 'lib/icons/donut.png',
-      tabName: 'Donuts', // Añadir texto
+      tabName: 'Donuts',
     ),
     const MyTab(
       iconPath: 'lib/icons/burger.png',
@@ -38,6 +38,16 @@ class _HomepageState extends State<Homepage> {
     ),
   ];
 
+  int cartItemCount = 0;
+  double totalPrice = 0.0;
+
+  void addToCart(double price) {
+    setState(() {
+      cartItemCount++;
+      totalPrice += price;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -45,26 +55,24 @@ class _HomepageState extends State<Homepage> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-
-          //left menu icon
           leading: Icon(
             Icons.menu,
             color: Colors.grey[800],
           ),
-          actions: [
+          actions: const [
             Padding(
-              padding: const EdgeInsets.only(right: 24.0),
+              padding: EdgeInsets.only(right: 24.0),
               child: Icon(Icons.person),
             )
           ],
         ),
         body: Column(
           children: [
-            //1. Texto principal (MainText)
+            // Texto principal
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Row(
-                children: [
+                children: const [
                   Text(
                     'I want to ',
                     style: TextStyle(fontSize: 32),
@@ -72,30 +80,33 @@ class _HomepageState extends State<Homepage> {
                   Text(
                     'Eat',
                     style: TextStyle(
-                        //Tamaño de letra
-                        fontSize: 32,
-                        //Negritas
-                        fontWeight: FontWeight.bold,
-                        //Subrayado
-                        decoration: TextDecoration.underline),
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ],
               ),
             ),
-            //2. Pestañas (TabBar)
+            // TabBar
             TabBar(tabs: myTabs),
-            //3. Contenido de pestañas (TabBarView)
+            // TabBarView con función
             Expanded(
-              child: TabBarView(children: [
-                DonutTab(),
-                BurgerTab(),
-                SmoothieTab(),
-                PancakesTab(),
-                PizzaTab(),
-              ]),
+              child: TabBarView(
+                children: [
+                  DonutTab(onAddToCart: addToCart),
+                  BurgerTab(onAddToCart: addToCart),
+                  SmoothieTab(onAddToCart: addToCart),
+                  PancakesTab(onAddToCart: addToCart),
+                  PizzaTab(onAddToCart: addToCart),
+                ],
+              ),
             ),
-            //4. Carrito (Cart)
-            ShoppingCart()
+            // ShoppingCart con valores actualizados
+            ShoppingCart(
+              itemCount: cartItemCount,
+              totalPrice: totalPrice,
+            ),
           ],
         ),
       ),

@@ -1,0 +1,2 @@
+/home/freyr/Topics/donut_app/android/app/.cxx/Debug/5w2p6l4j/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/freyr/Topics/donut_app/android/app/.cxx/Debug/5w2p6l4j/armeabi-v7a/CMakeFiles/rebuild_cache.dir

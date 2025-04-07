@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ShoppingCart extends StatelessWidget {
+  final int itemCount;
+  final double totalPrice;
+
   const ShoppingCart({
     super.key,
+    required this.itemCount,
+    required this.totalPrice,
   });
 
   @override
@@ -13,29 +18,32 @@ class ShoppingCart extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 28),
-            child: Column(                    
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Padding(
+            padding: const EdgeInsets.only(left: 28),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('2 items | \$45 ',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    )),
-                Text('Delivery Charges Included')
+                Text(
+                  '$itemCount items | \$${totalPrice.toStringAsFixed(2)}',
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const Text('Delivery Charges Included')
               ],
             ),
           ),
           ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.pink,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12)
-              ),
-              onPressed: () {}, 
-              child: const Text('View Cart',
-              style: TextStyle(color: Colors.white,
-              fontWeight: FontWeight.bold),))
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.pink,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            ),
+            onPressed: () {
+              // Aquí puedes navegar a la pantalla del carrito
+            },
+            child: const Text(
+              'Ver carrito',
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+          )
         ],
       ),
     );
